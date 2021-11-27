@@ -46,23 +46,23 @@ export default {
   data() {
     return {
       title: "Paper List",
-      books: [],
+      papers: [],
     };
   },
   mounted() {
     this.allBooks();
   },
   methods: {
-    allBooks() {
+    allPapers() {
       fetch(this.url + "/.netlify/functions/paperFindAll", {
         headers: { Accept: "application/json" },
       })
         .then((response) => response.json())
         .then((items) => {
-          this.books = items;
+          this.papers = items;
         });
     },
-    deleteBook(id) {
+    deletePaper(id) {
       fetch(this.url + "/.netlify/functions/paperDelete/" + id, {
         headers: { "Content-Type": "application/json" },
         method: "DELETE",
