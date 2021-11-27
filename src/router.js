@@ -6,7 +6,7 @@ import PaperDetails from "./components/PaperDetails.vue";
 const routes = [
   { path: "/", component: Home },
 	
-  { path: "/paper", component: paperIndex },
+  { path: "/paper", component: PaperIndex },
   { path: "/paper/show/:id", 
     component: PaperDetails, props: {show:true} },
   { path: "/paper/edit/:id", 

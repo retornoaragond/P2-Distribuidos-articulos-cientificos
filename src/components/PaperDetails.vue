@@ -66,7 +66,7 @@
 import { useRoute } from "vue-router";
 
 export default {
-  name: "Detalle Acticuloss cientificos",
+  name: "Detalle Acticulos cientificos",
   props: ["create", "edit", "create"],
   data() {
     return {
