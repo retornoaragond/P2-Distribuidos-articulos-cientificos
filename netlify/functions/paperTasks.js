@@ -14,29 +14,32 @@ exports.handler = async (event, context) => {
 
   try {
     const channel = await rabbitPromise();
-    let message = await channel.get("articles",{'noAck':true});
+    let message = await channel.get("articles", { 'noAck': true });
     while (message) {
       const request = JSON.parse(message.content.toString());
       switch (request.method) {
         case "DELETE":
-          await fetch(url+'paperDeleteBatch/'+request.id, {
+          await fetch(url + 'paperDeleteBatch/' + request.id, {
             method: "DELETE",
-            headers: {"Content-type": "application/json"}});
+            headers: { "Content-type": "application/json" }
+          });
           break;
         case "UPDATE":
-          await fetch(url+'paperUpdateBatch/'+request.id, {
-            headers: {"Content-type": "application/json"},
-            method: "PUT", body: JSON.stringify(request.body)});
+          await fetch(url + 'paperUpdateBatch/' + request.id, {
+            headers: { "Content-type": "application/json" },
+            method: "PUT", body: JSON.stringify(request.body)
+          });
           break;
         case "INSERT":
-          await fetch(url+'paperInsertBatch', {
-            headers: {"Content-type": "application/json"},
-            method: "POST",body: JSON.stringify(request.body)});
+          await fetch(url + 'paperInsertBatch', {
+            headers: { "Content-type": "application/json" },
+            method: "POST", body: JSON.stringify(request.body)
+          });
           break;
       }
-      message = await channel.get("articles",{'noAck':true});
+      message = await channel.get("articles", { 'noAck': true });
     }
-    return { statusCode: 200, headers, body: 'OK'};
+    return { statusCode: 200, headers, body: 'OK' };
   } catch (error) {
     console.log(error);
     return { statusCode: 422, headers, body: JSON.stringify(error) };
