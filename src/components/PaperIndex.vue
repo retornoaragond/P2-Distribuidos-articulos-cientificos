@@ -51,7 +51,7 @@ export default {
     };
   },
   mounted() {
-    this.allBooks();
+    this.allPapers();
   },
   methods: {
     allPapers() {
@@ -68,7 +68,7 @@ export default {
         headers: { "Content-Type": "application/json" },
         method: "DELETE",
       }).then((items) => {
-        this.allBooks();
+        this.allPapers();
       });
     },
   },
