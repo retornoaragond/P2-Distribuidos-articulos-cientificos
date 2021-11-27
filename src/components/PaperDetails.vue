@@ -98,6 +98,7 @@ export default {
       })
         .then((response) => response.json())
         .then((items) => {
+          console.log(items[0])
           this.paper = items[0];
         });
     },
