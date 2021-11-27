@@ -67,7 +67,7 @@ import { useRoute } from "vue-router";
 
 export default {
   name: "Detalle Acticulos cientificos",
-  props: ["create", "edit", "create"],
+  props: ["show", "edit", "create"],
   data() {
     return {
       title: "Datos del Articulo",
@@ -76,6 +76,7 @@ export default {
   },
   mounted() {
     const route = useRoute();
+    console.log(route.params.id);
     if (route.params.id != null) this.findPaper(route.params.id);
     else {
       this.paper = {
