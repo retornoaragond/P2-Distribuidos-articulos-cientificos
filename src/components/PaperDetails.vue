@@ -90,6 +90,7 @@ export default {
         author: "",
         url: "",
       };
+      console.log(this.paper);
     }
   },
   methods: {
@@ -99,7 +100,6 @@ export default {
       })
         .then((response) => response.json())
         .then((items) => {
-          console.log("initial i" + tems[0]);
           this.paper = items[0];
         });
     },
