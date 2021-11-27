@@ -21,14 +21,15 @@
             <td>{{ paper.copyright }}</td>
             <td>
               <router-link class="button" :to="'/papers/show/' +paper._id"
-                >Show</router-link
+                >Ver</router-link
               >
               &nbsp;
               <router-link class="button" :to="'/papers/edit/' + paper._id"
-                >Edit</router-link
+                >Editar</router-link
               >
               &nbsp;
-              <a class="button" v-on:click="deleteBook(paper._id)">Erase</a>
+              <a class="button" v-on:click="deleteBook(paper._id)">Eliminar
+              </a>
             </td>
           </tr>
         </tbody>
