@@ -13,7 +13,6 @@ exports.handler = async (event, context) => {
   try {
     const client = await mongoPromise;
     const id = parseInt(event.path.split("/").reverse()[0]);
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     const papers = 
 	  await client.db("articles").collection("papers").find({_id:id}).toArray();
 
