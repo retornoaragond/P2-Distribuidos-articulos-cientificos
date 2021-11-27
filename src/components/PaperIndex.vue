@@ -20,11 +20,11 @@
             <td>{{ paper.pages }}</td>
             <td>{{ paper.copyright }}</td>
             <td>
-              <router-link class="button" :to="'/papers/show/' +paper._id"
+              <router-link class="button" :to="'/paper/show/' +paper._id"
                 >Ver</router-link
               >
               &nbsp;
-              <router-link class="button" :to="'/papers/edit/' + paper._id"
+              <router-link class="button" :to="'/paper/edit/' + paper._id"
                 >Editar</router-link
               >
               &nbsp;
