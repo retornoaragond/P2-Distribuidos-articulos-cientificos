@@ -2,7 +2,7 @@
 <template>
   <div class="row">
     <div class="eleven column" style="margin-top: 5%">
-      <h2>{{ title }}</h2>
+      <!-- <h2>{{ title }}</h2> -->
       <form>
         <div class="row">
           <div class="six columns">

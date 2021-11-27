@@ -4,7 +4,7 @@
     <router-link class="three columns button button-primary" 
       to="/">Home</router-link>
     <router-link class="three columns button button-primary" 
-      to="/book">Articulos Cientificos</router-link>
+      to="/papers">Articulos Cientificos</router-link>
   </div>
  <router-view />
   <div class="row">
