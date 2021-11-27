@@ -8,14 +8,14 @@ exports.handler = async (event, context) => {
   if (event.httpMethod == "OPTIONS") {
     return { statusCode: 200, headers, body: "OK" };
   }
-  
+
   try {
-	const client = await clientPromise;
-	const data = JSON.parse(event.body);
-	data._id = parseInt(data._id)
+    const client = await clientPromise;
+    const id = parseInt(event.path.split("/").reverse()[0]);
+    const data = JSON.parse(event.body);
     console.log(event.body)
 
-	await client.db("bookstore").collection("books").insertOne(data);
+    await client.db("articles").collection("papers").updateOne({_id:id},{$set:data});
 
     return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {

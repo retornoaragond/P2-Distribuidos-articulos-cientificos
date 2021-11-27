@@ -11,11 +11,10 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const id = parseInt(event.path.split("/").reverse()[0]);
-
+    
     const channel = await rabbitPromise();
-    const request = `{'method':'UPDATE','id':${id},'body':${event.body}}`;
-    await channel.sendToQueue("bookstore", Buffer.from(request));
+    const request = `{'method':'INSERT','body':${event.body}}`;
+    await channel.sendToQueue("articles", Buffer.from(request));
 
     return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {

@@ -57,51 +57,50 @@
 import { useRoute } from 'vue-router'
 
 export default {
-  name: "Book Details",
+  name: "Detalle Acticuloss cientificos",
   props: ['create','edit','create'],
   data() {
     return {
-      title: "Book Data",
-      book: {}
+      title: "Datos del Articulo",
+      papers: {}
     }
   },
   mounted() {
     const route = useRoute()
     if (route.params.id != null)
-      this.findBook(route.params.id);
+      this.findPaper(route.params.id);
     else {
-      this.book = {
+      this.paper = {
         '_id': Math.floor(Math.random()*100000000),'title':'','edition':'',
-        'copyright':0,'language':'','pages':0,'author':'','author_id':0,
-        'publisher':'','publisher_id':0 };
+        'copyright':0,'language':'','pages':0,'author':'', 'url':""};
     }
   },
   methods: {
-    findBook: function(id) {
-      fetch(this.url+'/.netlify/functions/bookFind/'+id,
+    findPaper: function(id) {
+      fetch(this.url+'/.netlify/functions/paperFind/'+id,
       { headers: {'Accept': 'application/json'}})
       .then((response) => response.json())
       .then((items) => {
-       this.book = items[0];
+       this.paper = items[0];
       })
     },
-    updateBook: function(id) {
-      fetch(this.url+'/.netlify/functions/bookUpdate/'+id,
+    updatePaper: function(id) {
+      fetch(this.url+'/.netlify/functions/paperUpdate/'+id,
         { headers: {'Content-Type':'application/json'},
           method: 'PUT',
-          body: JSON.stringify(this.book)})
+          body: JSON.stringify(this.paper)})
         .then((data) => {
-          this.$router.push('/book');
+          this.$router.push('/paper');
         }
       )
     },
-    createBook: function() {
-      fetch(this.url+'/.netlify/functions/bookInsert',
+    createPaper: function() {
+      fetch(this.url+'/.netlify/functions/paperInsert',
         { headers: {'Content-Type':'application/json'},
           method: 'POST',
-          body: JSON.stringify(this.book)})
+          body: JSON.stringify(this.paper)})
         .then((data) => {
-           this.$router.push('/book');
+           this.$router.push('/paper');
         }
       )
     }

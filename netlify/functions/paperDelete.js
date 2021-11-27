@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
 
     const channel = await rabbitPromise();
     const request = `{'method':'DELETE','id': ${id} }`;
-    await channel.sendToQueue("bookstore", Buffer.from(request));
+    await channel.sendToQueue("articles", Buffer.from(request));
 
     return {statusCode: 200,headers,body: status};
   } catch (error) {
