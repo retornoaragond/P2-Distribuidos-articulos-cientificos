@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     findPaper: function (id) {
-      fetch(this.url + "/.netlify/functions/paperFind/" + _id, {
+      fetch(this.url + "/.netlify/functions/paperFind/" + id, {
         headers: { Accept: "application/json" },
       })
         .then((response) => response.json())
