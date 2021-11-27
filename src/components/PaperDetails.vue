@@ -77,7 +77,7 @@ export default {
   mounted() {
     const route = useRoute();
     console.log(route.params.id);
-    if (route.params.id) this.findPaper(route.params.id);
+    if (route.params.id != null || route.params.id != undefined) this.findPaper(route.params.id);
     else {
       this.paper = {
         _id: Math.floor(Math.random() * 100000000),
