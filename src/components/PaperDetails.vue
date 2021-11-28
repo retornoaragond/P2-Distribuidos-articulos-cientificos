@@ -2,7 +2,7 @@
 <template>
   <div class="row">
     <div class="eleven column" style="margin-top: 5%">
-      <h2>{{ title }}</h2>
+      <!--<h2>{{ title }}</h2>-->
       <form>
         <div class="row">
           <div class="six columns">
@@ -46,14 +46,14 @@
             v-if="edit"
             class="button button-primary"
             style="float: right"
-            v-on:click="updateBook(paper._id)"
+            v-on:click="updatePaper(paper._id)"
             >Update</a
           >
           <a
             v-if="create"
             class="button button-primary"
             style="float: right"
-            v-on:click="createBook()"
+            v-on:click="createPaper()"
             >Create</a
           >
         </div>
@@ -67,18 +67,21 @@ import { useRoute } from "vue-router";
 
 export default {
   name: "Detalle Acticulos cientificos",
-  props: ["show", "edit", "create"],
+  props: ['show', 'edit', 'create'],
   data() {
     return {
-      title: "Datos del Articulo",
-      papers: {},
+      //title: "Datos del Articulo",
+      paper: {},
+      maximo:{}
     };
   },
   mounted() {
     const route = useRoute();
     console.log(route.params.id);
-    if (route.params.id != null || route.params.id != undefined)
+    if (route.params.id != null || route.params.id != undefined){
       this.findPaper(route.params.id);
+      this.getMaxId();
+    }  
     else {
       this.paper = {
         _id: Math.floor(Math.random() * 100000000),
@@ -89,6 +92,7 @@ export default {
         pages: 0,
         author: "",
         url: "",
+        b64:""
       };
     }
   },
@@ -99,12 +103,22 @@ export default {
       })
         .then((response) => response.json())
         .then((items) => {
-          console.log("initial i" + tems[0]);
+          console.log("initial i" + items[0]);
           this.paper = items[0];
         });
     },
+    getMaxId: function (){
+      fetch(this.url + "/.netlify/functions/maxPaper", {
+        headers: { Accept: "application/json" },
+      })
+        .then((response) => response.json())
+        .then((items) => {
+          console.log("initial i" + items[0]);
+          this.maximo = items[0];
+        });
+    },
     updatePaper: function (id) {
-      fetch(this.url + "/.netlify/functions/paperUpdate/" + id, {
+      fetch(this.url + "/.netlify/functions/paperUpdateBatch/" + id, {
         headers: { "Content-Type": "application/json" },
         method: "PUT",
         body: JSON.stringify(this.paper),
@@ -113,7 +127,7 @@ export default {
       });
     },
     createPaper: function () {
-      fetch(this.url + "/.netlify/functions/paperInsert", {
+      fetch(this.url + "/.netlify/functions/paperInsertBatch", {
         headers: { "Content-Type": "application/json" },
         method: "POST",
         body: JSON.stringify(this.paper),
