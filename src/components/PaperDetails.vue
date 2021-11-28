@@ -15,17 +15,21 @@
           </div>
         </div>
         <div class="row">
-          <div class="six columns">
+          <div class="four columns">
             <label for="editionInput">Pages</label>
             <input class="u-full-width" type="text" v-model="paper.pages" />
           </div>
-          <div class="six columns">
+          <div class="four columns">
             <label for="copyrightInput">Copyright</label>
             <input
               class="u-full-width"
               type="number"
               v-model="paper.copyright"
             />
+          </div>
+          <div class="four columns">
+            <label for="authorInput">Categoria</label>
+            <input class="u-full-width" type="text" v-model="paper.categoria" />
           </div>
         </div>
         <div class="row">
@@ -92,7 +96,8 @@ export default {
         pages: 0,
         author: "",
         url: "",
-        b64:""
+        b64:"",
+        categoria:"",
       };
       console.log(this.paper);
     }
