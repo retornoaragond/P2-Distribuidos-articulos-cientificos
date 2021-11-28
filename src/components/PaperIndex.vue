@@ -3,11 +3,11 @@
   <div class="row">
     <div style="margin-top: 5%">
       <h2>{{ title }}</h2>
-      <div class="row" >
-    <select v-model="selection">
-        <option v-for="cat in cats">{{cat}}</option>
-    </select>
-    <button v-on:click="filterByCategory">Buscar</button>
+      <div class="row">
+        <select v-model="selection">
+          <option v-for="cat in cats">{{ cat }}</option>
+        </select>
+        <button v-on:click="filterByCategory">Buscar</button>
       </div>
       <table>
         <thead>
@@ -101,8 +101,14 @@ export default {
         this.allPapers();
       });
     },
-    filterByCategory(name){
-      console.log(this.selection);
+    filterByCategory() {
+      fetch(this.url + "/.netlify/functions/paperByCat/" + this.selection, {
+        headers: { Accept: "application/json" },
+      })
+        .then((response) => response.json())
+        .then((items) => {
+          this.papers = items;
+        });
     },
   },
 };
