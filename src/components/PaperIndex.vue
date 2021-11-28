@@ -9,6 +9,9 @@
           <option v-for="cat in cats">{{ cat }}</option>
         </select>
         <button v-on:click="filterByCategory">Buscar</button>
+        <router-link class="button button-primary" to="/paper/create"
+          >New</router-link
+        >
       </div>
       <table>
         <thead>
@@ -44,9 +47,6 @@
           </tr>
         </tbody>
       </table>
-      <router-link class="button button-primary" to="/paper/create"
-        >New</router-link
-      >
     </div>
   </div>
 </template>
