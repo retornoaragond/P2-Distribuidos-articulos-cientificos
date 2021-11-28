@@ -78,7 +78,7 @@ export default {
     return {
       title: "Paper List",
       papers: [],
-      cats:[],
+      cats: [],
     };
   },
   mounted() {
@@ -98,13 +98,13 @@ export default {
       });
     }
     fetch(this.url + "/.netlify/functions/paperDistinct", {
-        headers: { Accept: "application/json" },
-      })
-        .then((response) => response.json())
-        .then((items) => {
-          this.cats = items;
-        });
+      headers: { Accept: "application/json" },
+    })
+      .then((response) => response.json())
+      .then((items) => {
+        this.cats = items;
         console.log(this.cats);
+      });
   },
   methods: {
     allPapers() {
