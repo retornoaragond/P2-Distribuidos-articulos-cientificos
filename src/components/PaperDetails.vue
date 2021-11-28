@@ -2,7 +2,7 @@
 <template>
   <div class="row">
     <div class="eleven column" style="margin-top: 5%">
-      <!-- <h2>{{ title }}</h2> -->
+      <h2>{{ title }}</h2>
       <form>
         <div class="row">
           <div class="six columns">
@@ -78,7 +78,7 @@ export default {
     const route = useRoute();
     console.log(route.params.id);
     if (route.params.id != null || route.params.id != undefined)
-      this.findPaper(route.params.id);
+       this.findPaper(route.params.id);
     else {
       this.paper = {
         _id: Math.floor(Math.random() * 100000000),
@@ -101,6 +101,7 @@ export default {
         .then((response) => response.json())
         .then((items) => {
           this.paper = items[0];
+          console.log(this.paper);
         });
     },
     updatePaper: function (id) {
