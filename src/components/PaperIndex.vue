@@ -4,7 +4,7 @@
     <div style="margin-top: 5%">
       <h2>{{ title }}</h2>
       <div class="row" v-for="cat in cats">
-        <button class="accordion">cat</button>
+        <button class="accordion">{{cat}}</button>
         <div class="panel">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
