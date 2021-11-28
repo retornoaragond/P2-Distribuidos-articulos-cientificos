@@ -70,18 +70,15 @@ export default {
   props: ['show', 'edit', 'create'],
   data() {
     return {
-      //title: "Datos del Articulo",
+      title: "Datos del Articulo",
       paper: {},
-      maximo:{}
     };
   },
   mounted() {
     const route = useRoute();
     console.log(route.params.id);
-    if (route.params.id != null || route.params.id != undefined){
-      this.findPaper(route.params.id);
-      this.getMaxId();
-    }  
+    if (route.params.id != null || route.params.id != undefined)
+       this.findPaper(route.params.id);
     else {
       this.paper = {
         _id: Math.floor(Math.random() * 100000000),
@@ -94,6 +91,7 @@ export default {
         url: "",
         b64:""
       };
+      console.log(this.paper);
     }
   },
   methods: {
@@ -103,8 +101,8 @@ export default {
       })
         .then((response) => response.json())
         .then((items) => {
-          console.log("initial i" + items[0]);
           this.paper = items[0];
+          console.log(this.paper);
         });
     },
     getMaxId: function (){
