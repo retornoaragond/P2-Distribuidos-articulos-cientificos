@@ -4,9 +4,7 @@
     <div style="margin-top: 5%">
       <h2>{{ title }}</h2>
       <div class="row" >
-        <h1>Opciones</h1>
-        <div class="input-field">
-    <select ref="selection">
+    <select v-model="selection">
         <option v-for="cat in cats">{{cat}}</option>
     </select>
     <button v-on:click="filterByCategory(cat)">Buscar</button>
