@@ -4,6 +4,7 @@
     <div style="margin-top: 5%">
       <h2>{{ title }}</h2>
       <div class="row">
+        <label for="">Categorias: </label>
         <select v-model="selection">
           <option v-for="cat in cats">{{ cat }}</option>
         </select>
@@ -61,20 +62,6 @@ export default {
   },
   mounted() {
     this.allPapers();
-    let acc = document.getElementsByClassName("accordion");
-    let i;
-
-    for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
-        } else {
-          panel.style.display = "block";
-        }
-      });
-    }
     fetch(this.url + "/.netlify/functions/paperDistinct", {
       headers: { Accept: "application/json" },
     })
