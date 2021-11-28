@@ -38,6 +38,9 @@
             <input class="u-full-width" type="text" v-model="paper.url" />
           </div>
         </div>
+        <div class="row"  v-if="show">
+          <iframe :src="paper.url" frameborder="0" width="100%" height="500px" type="application/pdf"/>
+        </div>
         <div class="row">
           <router-link class="button button-primary" to="/paper"
             >Back</router-link
