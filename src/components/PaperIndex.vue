@@ -7,8 +7,7 @@
     <select v-model="selection">
         <option v-for="cat in cats">{{cat}}</option>
     </select>
-    <button v-on:click="filterByCategory(cat)">Buscar</button>
-
+    <button v-on:click="filterByCategory">Buscar</button>
       </div>
       <table>
         <thead>
@@ -104,8 +103,7 @@ export default {
     },
     filterByCategory(name){
       console.log(this.selection);
-      console.log(name);
-    }
+    },
   },
 };
 </script>
