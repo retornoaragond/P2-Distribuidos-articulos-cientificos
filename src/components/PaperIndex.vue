@@ -103,8 +103,8 @@ export default {
       .then((response) => response.json())
       .then((items) => {
         this.cats = items;
-        console.log(this.cats);
       });
+      
   },
   methods: {
     allPapers() {
