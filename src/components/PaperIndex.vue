@@ -26,7 +26,7 @@
             <td>{{ paper.title }}</td>
             <td>{{ paper.author }}</td>
             <td>{{ paper.pages }}</td>
-            <td>{{ paper.categoria}}</td>
+            <td>{{ paper.categoria }}</td>
             <td>{{ paper.copyright }}</td>
             <td>
               <router-link class="button" :to="'/paper/show/' + paper._id"
@@ -70,6 +70,7 @@ export default {
       .then((response) => response.json())
       .then((items) => {
         this.cats = items;
+        this.cats.push("Todas");
       });
   },
   methods: {
@@ -91,13 +92,17 @@ export default {
       });
     },
     filterByCategory() {
-      fetch(this.url + "/.netlify/functions/paperByCat/" + this.selection, {
-        headers: { Accept: "application/json" },
-      })
-        .then((response) => response.json())
-        .then((items) => {
-          this.papers = items;
-        });
+      if (this.selection === "Todas") {
+        this.allPapers();
+      } else {
+        fetch(this.url + "/.netlify/functions/paperByCat/" + this.selection, {
+          headers: { Accept: "application/json" },
+        })
+          .then((response) => response.json())
+          .then((items) => {
+            this.papers = items;
+          });
+      }
     },
   },
 };
