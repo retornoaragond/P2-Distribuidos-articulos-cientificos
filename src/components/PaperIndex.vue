@@ -28,7 +28,7 @@
                 >Editar</router-link
               >
               &nbsp;
-              <a class="button" v-on:click="deleteBook(paper._id)">Eliminar </a>
+              <a class="button" v-on:click="deletePaper(paper._id)">Eliminar </a>
             </td>
           </tr>
         </tbody>

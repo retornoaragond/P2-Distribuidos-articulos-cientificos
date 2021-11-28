@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="row">
-          <router-link class="button button-primary" to="/book"
+          <router-link class="button button-primary" to="/paper"
             >Back</router-link
           >
           <a
