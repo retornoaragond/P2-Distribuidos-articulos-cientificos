@@ -16,6 +16,7 @@
             <th>Titulo</th>
             <th>Autor</th>
             <th>Paginas</th>
+            <th>Categoria</th>
             <th>Copyright</th>
             <th class="text-center">Actions</th>
           </tr>
@@ -25,6 +26,7 @@
             <td>{{ paper.title }}</td>
             <td>{{ paper.author }}</td>
             <td>{{ paper.pages }}</td>
+            <td>{{ paper.categoria}}</td>
             <td>{{ paper.copyright }}</td>
             <td>
               <router-link class="button" :to="'/paper/show/' + paper._id"
