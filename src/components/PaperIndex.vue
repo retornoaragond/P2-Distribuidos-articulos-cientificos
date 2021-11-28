@@ -63,7 +63,7 @@ export default {
         });
     },
     deletePaper(id) {
-      fetch(this.url + "/.netlify/functions/paperDelete/" + id, {
+      fetch(this.url + "/.netlify/functions/paperDeleteBatch/" + id, {
         headers: { "Content-Type": "application/json" },
         method: "DELETE",
       }).then((items) => {
