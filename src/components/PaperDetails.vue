@@ -67,7 +67,7 @@ import { useRoute } from "vue-router";
 
 export default {
   name: "Detalle Acticulos cientificos",
-  props: ["show", "edit", "create"],
+  props: ['show', 'edit', 'create'],
   data() {
     return {
       title: "Datos del Articulo",
