@@ -104,6 +104,7 @@ export default {
     },
     filterByCategory(name){
       console.log(this.selection);
+      console.log(name);
     }
   },
 };
