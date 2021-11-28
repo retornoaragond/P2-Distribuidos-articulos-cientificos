@@ -3,16 +3,14 @@
   <div class="row">
     <div style="margin-top: 5%">
       <h2>{{ title }}</h2>
-      <div class="row" v-for="cat in cats">
-        <button class="accordion">{{cat}}</button>
-        <div class="panel">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-        </div>
+      <div class="row" >
+        <h1>Opciones</h1>
+        <div class="input-field">
+    <select ref="selection">
+        <option v-for="cat in cats">{{cat}}</option>
+    </select>
+    <button v-on:click="filterByCategory(cat)">Buscar</button>
+
       </div>
       <table>
         <thead>
@@ -61,6 +59,7 @@ export default {
       title: "Paper List",
       papers: [],
       cats: [],
+      selection: "",
     };
   },
   mounted() {
@@ -105,6 +104,9 @@ export default {
         this.allPapers();
       });
     },
+    filterByCategory(name){
+      console.log(this.selection);
+    }
   },
 };
 </script>
